@@ -34,7 +34,7 @@
       <Header>
         <Menu mode="horizontal" theme="dark" active-name="1">
           <div class="layout-logo">
-            <img src="../assets/imgs/rocket.png" alt="" style="height: 100%;vertical-align: bottom;">
+            <img src="../assets/imgs/rocket.png" style="height: 100%;vertical-align: bottom;">
             <span style="vertical-align: bottom;">Web Lab</span>
           </div>
           <div class="layout-nav">
@@ -59,7 +59,10 @@
       </Header>
       <Layout>
         <Sider hide-trigger :style="{background: '#fff'}">
-          <Menu active-name="" theme="light" width="auto" :open-names="['1']">
+          <Menu :active-name="activeMenuName"
+                theme="light" width="auto"
+                @on-select="onSelectMenu"
+                :open-names="[openMenuName]">
             <Submenu :name="submenuRoute.name"
                      :key="submenuRoute.name"
                      v-for="submenuRoute in children">
@@ -68,7 +71,7 @@
                 {{submenuRoute.label}}
               </template>
 
-              <MenuItem :name="menuItemRoute.name"
+              <MenuItem :name="`${submenuRoute.name}-${menuItemRoute.name}`"
                         :key="menuItemRoute.name"
                         v-for="menuItemRoute in submenuRoute.children">
                 <Icon :type="menuItemRoute.icon"></Icon>
@@ -106,12 +109,27 @@
         const {children} = mainRoute
         this.children = children
       }
-      console.log(this.$route)
+    },
+    computed: {
+      //compute the current active menu name in order to highlight them, including all level menus.
+      activeMenuName () {
+        const {matched} = this.$route
+        const names = []
+        matched.forEach(({name}, index) => {
+          if (name !== 'Main') {
+            names.push(name)
+          }
+        })
+        return names.join('-')
+      },
+      openMenuName () {
+        return this.$route.matched.length >= 2 && this.$route.matched[1].name
+      }
     },
     methods: {
-      //compute the current active menu name in order to highlight them, including all level menus.
-      computeActiveName() {
-
+      onSelectMenu (name) {
+        const [, secondName] = name.split('-')
+        this.$router.push({name: secondName})
       }
     }
   }

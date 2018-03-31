@@ -2,7 +2,7 @@
  * 作者: xinyaoli
  * 日期: 2018/3/31 17:45
  */
-const Basic = () => import(/* webpackChunkName: "BASIC" */ '../components/basic/Index')
+const Basic = () => import(/* webpackChunkName: "Basic" */ '../components/basic/Index')
 const ExcessiveAnimation = () => import(/* webpackChunkName: "ExcessiveAnimation" */ '../components/excessive-animation/Index')
 const Tool = () => import(/* webpackChunkName: "Tool" */ '../components/tool/Index')
 
