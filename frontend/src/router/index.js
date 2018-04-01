@@ -140,6 +140,13 @@ export default new VueRouter({
           ]
         },
       ]
-    }
+    },
+    {
+      path: '*',
+      redirect: {name: 'Introduce'},
+      meta: {
+        withoutMenu: true
+      }
+    },
   ]
 })

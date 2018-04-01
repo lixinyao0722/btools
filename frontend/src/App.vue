@@ -98,7 +98,7 @@
     },
     created () {
       const {options: {routes}} = this.$router
-      this.firstRoutes = routes
+      this.firstRoutes = routes.filter(({meta}) => !meta.withoutMenu)
       this.resolveInfoByRoute(this.$route)
     },
     watch: {
