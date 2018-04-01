@@ -1,10 +1,12 @@
 <template>
-
+    <div>
+      Hello world
+    </div>
 </template>
 
 <script>
   export default {
-    name: 'UintTest'
+    name: 'ConfigTool'
   }
 </script>
 

@@ -17,7 +17,10 @@ const StateExcessive = () => import(/* webpackChunkName: "ExcessiveAnimation" */
 /*Tool begin*/
 const ProdEnvDeploy = () => import(/* webpackChunkName: "Tool" */ '../components/tool/ProdEnvDeploy')
 const SingleFileComp = () => import(/* webpackChunkName: "Tool" */ '../components/tool/SingleFileComp')
-const UnitTest = () => import(/* webpackChunkName: "Tool" */ '../components/tool/UnitTest')
+const UnitTest = () => import(/* webpackChunkName: "Tool" */ '../components/tool/unit-test/Index')
+
+const ConfigTool = () => import(/* webpackChunkName: "Tool" */ '../components/tool/unit-test/ConfigTool')
+const SimpleAssert = () => import(/* webpackChunkName: "Tool" */ '../components/tool/unit-test/SimpleAssert')
 /*Tool end*/
 
 export default new VueRouter({
@@ -114,7 +117,27 @@ export default new VueRouter({
           meta: {
             label: '单文件组件',
             icon: 'ios-football'
-          }
+          },
+          children: [
+            {
+              path: 'config-tool',
+              name: 'ConfigTool',
+              component: ConfigTool,
+              meta: {
+                label: '配置和工具',
+                icon: 'asterisk'
+              }
+            },
+            {
+              path: 'simple-assert',
+              name: 'SimpleAssert',
+              component: SimpleAssert,
+              meta: {
+                label: '简单的断言',
+                icon: 'funnel'
+              },
+            }
+          ]
         },
       ]
     }

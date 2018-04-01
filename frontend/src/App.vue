@@ -43,12 +43,14 @@
                 {{firstRoute.meta.label}}
               </template>
 
-              <!--二级菜单-->
               <template v-if="firstRoute.children && firstRoute.children.length > 0"
                         v-for="secondRoute in firstRoute.children">
+                <!--二级非叶子菜单-->
                 <Submenu :name="secondRoute.name" v-if="secondRoute.children && secondRoute.children.length > 0">
-                  <Icon :type="secondRoute.meta.icon"></Icon>
-                  {{secondRoute.meta.label}}
+                  <template slot="title">
+                    <Icon :type="secondRoute.meta.icon"></Icon>
+                    {{secondRoute.meta.label}}
+                  </template>
 
                   <!--三级菜单-->
                   <MenuItem :name="thirdRoute.name" :key="thirdRoute.name"
@@ -58,7 +60,8 @@
                   </MenuItem>
                 </Submenu>
 
-                <MenuItem v-else :name="secondRoute.name">
+                <!--二级叶子菜单-->
+                <MenuItem  :name="secondRoute.name">
                   <Icon :type="secondRoute.meta.icon"></Icon>
                   {{secondRoute.meta.label}}
                 </MenuItem>
@@ -69,7 +72,7 @@
         <Layout :style="{padding: '0 24px 24px'}">
           <Breadcrumb :style="{margin: '24px 0'}">
             <BreadcrumbItem v-for="breadcrumb in breadcrumbs"
-                            :key="breadcrumb.name">
+                              :key="breadcrumb.name">
               <Icon :type="breadcrumb.icon"></Icon>
               {{breadcrumb.label}}
             </BreadcrumbItem>
