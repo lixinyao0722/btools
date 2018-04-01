@@ -61,7 +61,7 @@
                 </Submenu>
 
                 <!--二级叶子菜单-->
-                <MenuItem  :name="secondRoute.name">
+                <MenuItem v-else :name="secondRoute.name">
                   <Icon :type="secondRoute.meta.icon"></Icon>
                   {{secondRoute.meta.label}}
                 </MenuItem>
@@ -72,7 +72,7 @@
         <Layout :style="{padding: '0 24px 24px'}">
           <Breadcrumb :style="{margin: '24px 0'}">
             <BreadcrumbItem v-for="breadcrumb in breadcrumbs"
-                              :key="breadcrumb.name">
+                            :key="breadcrumb.name">
               <Icon :type="breadcrumb.icon"></Icon>
               {{breadcrumb.label}}
             </BreadcrumbItem>

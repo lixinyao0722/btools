@@ -115,7 +115,7 @@ export default new VueRouter({
           name: 'UnitTest',
           component: UnitTest,
           meta: {
-            label: '单文件组件',
+            label: '单元测试',
             icon: 'ios-football'
           },
           children: [
