@@ -12,6 +12,13 @@ Vue.config.productionTip = false
 Vue.use(VueRouter)
 Vue.use(iView)
 
+// router.beforeEach((to, from, next)=>{
+//   console.log(to, from)
+//   next()
+// })
+
+// ra
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
