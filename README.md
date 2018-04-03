@@ -4,3 +4,4 @@
   Add a little more content right here.
 
 ##### add some right here
+## 次要 git冲突是怎样的
