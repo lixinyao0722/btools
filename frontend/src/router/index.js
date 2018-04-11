@@ -1,6 +1,7 @@
 import VueRouter from 'vue-router'
 
 const Flex = () => import(/* webpackChunkName: "flex" */ '../components/flex-demo/flex')
+const Js = () => import(/* webpackChunkName: "js" */ '../components/js-demo/js')
 const Basic = () => import(/* webpackChunkName: "basic" */ '../components/basic/Index')
 const ExcessiveAnimation = () => import(/* webpackChunkName: "excessiveAnimation" */ '../components/excessive-animation/Index')
 const Tool = () => import(/* webpackChunkName: "tool" */ '../components/tool/Index')
@@ -34,6 +35,15 @@ export default new VueRouter({
       meta: {
         label: 'Flex布局测试',
         icon: 'email-unread',
+      },
+    },
+    {
+      path: '/js',
+      name: 'Js',
+      component: Js,
+      meta: {
+        label: 'Js测试',
+        icon: 'ios-nutrition',
       },
     },
     {
