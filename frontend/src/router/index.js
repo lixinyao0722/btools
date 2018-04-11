@@ -4,6 +4,8 @@ const Basic = () => import(/* webpackChunkName: "Basic" */ '../components/basic/
 const ExcessiveAnimation = () => import(/* webpackChunkName: "ExcessiveAnimation" */ '../components/excessive-animation/Index')
 const Tool = () => import(/* webpackChunkName: "Tool" */ '../components/tool/Index')
 
+const Flex = () => import(/* webpackChunkName: "Basic" */ '../components/flex-demo/flex')
+
 /*Basic begin*/
 const Introduce = () => import(/* webpackChunkName: "Basic" */ '../components/basic/Introduce')
 const VueInstance = () => import(/* webpackChunkName: "Basic" */ '../components/basic/VueInstance')
@@ -25,6 +27,15 @@ const SimpleAssert = () => import(/* webpackChunkName: "Tool" */ '../components/
 
 export default new VueRouter({
   routes: [
+    {
+      path: '/flex',
+      name: 'Flex',
+      component: Flex,
+      meta: {
+        label: 'Flex布局测试',
+        icon: 'email-unread',
+      },
+    },
     {
       path: '/basic',
       name: 'Basic',

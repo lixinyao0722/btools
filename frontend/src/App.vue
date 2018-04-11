@@ -36,37 +36,45 @@
                 theme="light" width="auto"
                 @on-select="onSelectMenu"
                 :open-names="this.openNames">
-            <!--一级菜单-->
-            <Submenu :name="firstRoute.name" :key="firstRoute.name" v-for="firstRoute in firstRoutes">
-              <template slot="title">
-                <Icon :type="firstRoute.meta.icon"></Icon>
-                {{firstRoute.meta.label}}
-              </template>
+            <template v-for="firstRoute in firstRoutes">
+              <!--一级非叶子菜单-->
+              <Submenu :name="firstRoute.name" v-if="firstRoute.children && firstRoute.children.length > 0">
+                <template slot="title">
+                  <Icon :type="firstRoute.meta.icon"></Icon>
+                  {{firstRoute.meta.label}}
+                </template>
 
-              <template v-if="firstRoute.children && firstRoute.children.length > 0"
-                        v-for="secondRoute in firstRoute.children">
-                <!--二级非叶子菜单-->
-                <Submenu :name="secondRoute.name" v-if="secondRoute.children && secondRoute.children.length > 0">
-                  <template slot="title">
+                <template v-if="firstRoute.children && firstRoute.children.length > 0"
+                          v-for="secondRoute in firstRoute.children">
+                  <!--二级非叶子菜单-->
+                  <Submenu :name="secondRoute.name" v-if="secondRoute.children && secondRoute.children.length > 0">
+                    <template slot="title">
+                      <Icon :type="secondRoute.meta.icon"></Icon>
+                      {{secondRoute.meta.label}}
+                    </template>
+
+                    <!--三级菜单-->
+                    <MenuItem :name="thirdRoute.name" :key="thirdRoute.name"
+                              v-for="thirdRoute in secondRoute.children">
+                      <Icon :type="thirdRoute.meta.icon"></Icon>
+                      {{thirdRoute.meta.label}}
+                    </MenuItem>
+                  </Submenu>
+
+                  <!--二级叶子菜单-->
+                  <MenuItem v-else :name="secondRoute.name">
                     <Icon :type="secondRoute.meta.icon"></Icon>
                     {{secondRoute.meta.label}}
-                  </template>
-
-                  <!--三级菜单-->
-                  <MenuItem :name="thirdRoute.name" :key="thirdRoute.name"
-                            v-for="thirdRoute in secondRoute.children">
-                    <Icon :type="thirdRoute.meta.icon"></Icon>
-                    {{thirdRoute.meta.label}}
                   </MenuItem>
-                </Submenu>
+                </template>
+              </Submenu>
 
-                <!--二级叶子菜单-->
-                <MenuItem v-else :name="secondRoute.name">
-                  <Icon :type="secondRoute.meta.icon"></Icon>
-                  {{secondRoute.meta.label}}
-                </MenuItem>
-              </template>
-            </Submenu>
+              <!--一级叶子菜单-->
+              <MenuItem v-else :name="firstRoute.name">
+                <Icon :type="firstRoute.meta.icon"></Icon>
+                {{firstRoute.meta.label}}
+              </MenuItem>
+            </template>
           </Menu>
         </Sider>
         <Layout :style="{padding: '0 24px 24px'}">
