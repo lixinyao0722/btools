@@ -1,31 +1,31 @@
 import VueRouter from 'vue-router'
 
-const Basic = () => import(/* webpackChunkName: "Basic" */ '../components/basic/Index')
-const ExcessiveAnimation = () => import(/* webpackChunkName: "ExcessiveAnimation" */ '../components/excessive-animation/Index')
-const Tool = () => import(/* webpackChunkName: "Tool" */ '../components/tool/Index')
-
-const Flex = () => import(/* webpackChunkName: "Basic" */ '../components/flex-demo/flex')
+const Flex = () => import(/* webpackChunkName: "flex" */ '../components/flex-demo/flex')
+const Basic = () => import(/* webpackChunkName: "basic" */ '../components/basic/Index')
+const ExcessiveAnimation = () => import(/* webpackChunkName: "excessiveAnimation" */ '../components/excessive-animation/Index')
+const Tool = () => import(/* webpackChunkName: "tool" */ '../components/tool/Index')
 
 /*Basic begin*/
-const Introduce = () => import(/* webpackChunkName: "Basic" */ '../components/basic/Introduce')
-const VueInstance = () => import(/* webpackChunkName: "Basic" */ '../components/basic/VueInstance')
+const Introduce = () => import(/* webpackChunkName: "basic" */ '../components/basic/Introduce')
+const VueInstance = () => import(/* webpackChunkName: "basic" */ '../components/basic/VueInstance')
 /*Basic end*/
 
 /*ExcessiveAnimation begin*/
-const EnterLeave = () => import(/* webpackChunkName: "ExcessiveAnimation" */ '../components/excessive-animation/EnterLeave')
-const StateExcessive = () => import(/* webpackChunkName: "ExcessiveAnimation" */ '../components/excessive-animation/StateExcessive')
+const EnterLeave = () => import(/* webpackChunkName: "excessiveAnimation" */ '../components/excessive-animation/EnterLeave')
+const StateExcessive = () => import(/* webpackChunkName: "excessiveAnimation" */ '../components/excessive-animation/StateExcessive')
 /*ExcessiveAnimation end*/
 
 /*Tool begin*/
-const ProdEnvDeploy = () => import(/* webpackChunkName: "Tool" */ '../components/tool/ProdEnvDeploy')
-const SingleFileComp = () => import(/* webpackChunkName: "Tool" */ '../components/tool/SingleFileComp')
-const UnitTest = () => import(/* webpackChunkName: "Tool" */ '../components/tool/unit-test/Index')
+const ProdEnvDeploy = () => import(/* webpackChunkName: "tool" */ '../components/tool/ProdEnvDeploy')
+const SingleFileComp = () => import(/* webpackChunkName: "tool" */ '../components/tool/SingleFileComp')
+const UnitTest = () => import(/* webpackChunkName: "tool" */ '../components/tool/unit-test/Index')
 
-const ConfigTool = () => import(/* webpackChunkName: "Tool" */ '../components/tool/unit-test/ConfigTool')
-const SimpleAssert = () => import(/* webpackChunkName: "Tool" */ '../components/tool/unit-test/SimpleAssert')
+const ConfigTool = () => import(/* webpackChunkName: "tool" */ '../components/tool/unit-test/ConfigTool')
+const SimpleAssert = () => import(/* webpackChunkName: "tool" */ '../components/tool/unit-test/SimpleAssert')
 /*Tool end*/
 
 export default new VueRouter({
+  mode: 'history',
   routes: [
     {
       path: '/flex',
